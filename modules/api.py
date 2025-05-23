@@ -1,14 +1,20 @@
 from http.server import SimpleHTTPRequestHandler, HTTPServer
-from json import dumps
+from json import dumps, loads
 
 
 class RestHandler(SimpleHTTPRequestHandler):
     def do_POST(self):
         content_length = int(self.headers['Content-Length'])
         post_data = self.rfile.read(content_length)
-        response = {
-            'response': f'Server received on address "{self.path}" POST data: {post_data.decode("utf-8")}',
-        }
+        response = { 'description': 'REST API for Bot War' }
+        if self.path == '/start':
+            post_data_dict = loads(post_data)
+            response = {
+                'description': 'Starting bot war game...',
+                'players': len(post_data_dict['players']),
+            }
+            
+            
         self.create_response(response)
         
         
