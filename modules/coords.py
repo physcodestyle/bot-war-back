@@ -4,5 +4,5 @@ class Coords:
         self.left = left
     
 
-    def get(self):
+    def get(self) -> tuple[int, int]:
         return (self.top, self.left)
