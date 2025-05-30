@@ -30,3 +30,11 @@ class Object:
 
     def get_type(self) -> ObjectType:
         return self.type
+
+    
+    def is_own_object_coords(self, coords: Coords) -> bool:
+        left, top = self.origin.get()
+        width, height = self.size.get()
+        right, bottom = left + width, top + height
+        point_left, point_top = coords.get()
+        return point_left >= left and point_left <= right and point_top >= top and point_top <= bottom
