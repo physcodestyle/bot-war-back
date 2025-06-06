@@ -1,4 +1,4 @@
-import sys, random
+import random
 from modules.coords import Coords
 from modules.object import Object, ObjectType
 from modules.map import Map
